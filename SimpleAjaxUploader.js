@@ -690,7 +690,7 @@ ss.SimpleUpload = function( options ) {
         onSubmit: function( filename, extension, uploadBtn, size ) {},
         onProgress: function( pct ) {},
         onUpdateFileSize: function( filesize ) {},
-        onComplete: function( filename, response, uploadBtn, size ) {},
+        onComplete: function( filename, response, uploadBtn, size, file ) {},
         onDone: function( filename, status, textStatus, response, uploadBtn, size ) {},
         onAllDone: function() {},
         onExtError: function( filename, extension ) {},
@@ -2166,7 +2166,7 @@ ss.extendObj( ss.SimpleUpload.prototype, {
             }
         }
 
-        this._opts.onComplete.call( this, fileObj.name, response, fileObj.btn, fileObj.size );
+        this._opts.onComplete.call( this, fileObj.name, response, fileObj.btn, fileObj.size, fileObj.file);
         this._last( sizeBox, progBox, pctBox, abortBtn, removeAbort, fileObj, 'success', status, response );
         statusText = sizeBox = progBox = pctBox = abortBtn = removeAbort = null;
     },
